@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Certificate Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Certificate Generator</h1>
+      <button class="theme-toggle" id="themeToggle">🌙</button>
+    </header>
+
+    <div class="two-column">
+      <div class="column">
+        <!-- Certificate Template Upload -->
+        <div class="card">
+          <h2>Certificate Template</h2>
+          <div class="upload-area" id="certificateUploadArea">
+            <div class="upload-icon">📄</div>
+            <p>Click or drag to upload certificate template</p>
+            <p id="certificateFileName" class="hidden"></p>
+            <input type="file" id="certificateUpload" class="file-input" accept="image/*" />
+          </div>
+        </div>
+
+        <!-- Names Management -->
+        <div class="card">
+          <h2>Names Management</h2>
+          
+          <!-- Excel Upload -->
+          <div class="upload-area" id="excelUploadArea">
+            <div class="upload-icon">📊</div>
+            <p>Upload Excel file with names</p>
+            <p id="excelFileName" class="hidden"></p>
+            <input type="file" id="excelUpload" class="file-input" accept=".xlsx, .xls" />
+          </div>
+          
+          <!-- Manual Name Input -->
+          <div class="input-group">
+            <input type="text" id="nameInput" placeholder="Add name manually" />
+            <button class="btn" id="addNameBtn">Add</button>
+          </div>
+          
+          <!-- Name List with Checkboxes -->
+          <div class="checkbox-list" id="namesList">
+            <p class="text-center">No names added yet</p>
+          </div>
+          
+          <!-- Action Buttons -->
+          <div class="action-bar">
+            <button class="btn btn-outline" id="selectAllBtn">Select All</button>
+            <button class="btn btn-outline" id="unselectAllBtn">Unselect All</button>
+            <button class="btn btn-danger" id="clearNamesBtn">Clear All</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <!-- Preview & Generate -->
+        <div class="card preview-card">
+          <h2>Certificate Preview</h2>
+          <div id="previewContainer">
+            <p id="noCertificate">Upload a certificate template to see preview</p>
+            <canvas id="certificateCanvas" class="hidden"></canvas>
+          </div>
+          
+          <!-- Generate Button -->
+          <div class="action-bar">
+            <button class="btn" id="previewBtn">Preview Selected</button>
+            <button class="btn" id="generateBtn">Generate All Certificates</button>
+          </div>
+        </div>
+        
+        <!-- Status Bar (Hidden by default) -->
+        <div class="status-bar hidden" id="statusBar">
+          <span id="statusText">Processing...</span>
+          <div class="status-progress">
+            <div class="status-progress-bar" id="progressBar"></div>
+          </div>
+          <span id="statusCount">0/0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
